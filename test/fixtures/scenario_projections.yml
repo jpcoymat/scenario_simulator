@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scenario_id: 1
+  projection_order: 1
+  on_hand_quantity: 9.99
+  supply_forecast_quantity: 9.99
+  on_order_quantity: 9.99
+  in_transit_quantity: 9.99
+  allocated_quantity: 9.99
+  demand_forecast_quantity: 9.99
+
+two:
+  scenario_id: 1
+  projection_order: 1
+  on_hand_quantity: 9.99
+  supply_forecast_quantity: 9.99
+  on_order_quantity: 9.99
+  in_transit_quantity: 9.99
+  allocated_quantity: 9.99
+  demand_forecast_quantity: 9.99

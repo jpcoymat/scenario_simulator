@@ -1,0 +1,4 @@
+class Shipment < MovementSource
+
+
+end

@@ -1,0 +1,2 @@
+class MovementSource < ApplicationRecord
+end

@@ -1,0 +1,3 @@
+class Order < MovementSource
+
+end
