@@ -1,5 +1,7 @@
 class LocationsController  < ApplicationController
+
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :set_organization
 
   def index
     @locations = Location.all
@@ -66,4 +68,9 @@ class LocationsController  < ApplicationController
   def set_location
      @location = Location.find(params[:id])
   end
+
+  def set_organization
+    @organization = Organization.find(params[:organization_id])
+  end
+
 end

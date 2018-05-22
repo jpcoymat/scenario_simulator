@@ -1,5 +1,6 @@
 class ProductsController  < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_organization
 
   def index
     @products = Product.all
@@ -66,4 +67,10 @@ class ProductsController  < ApplicationController
   def set_product
      @product = Product.find(params[:id])
   end
+
+  def set_organization
+    @organization = Organization.find(params[:organization_id])
+  end
+
+
 end

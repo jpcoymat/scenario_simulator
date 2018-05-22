@@ -35,7 +35,7 @@ class UnifiedOrderService
       mode: @mode,
       quantity: @quantity
     }
-    if @enterprise_org == @customer_org
+    if @enterprise_org == @buyer_org 
       uo_params[:order_class] = @enterprise_org.supply_order_class
       unified_order = InboundUnifiedOrder.new(uo_params)
     else
