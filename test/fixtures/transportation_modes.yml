@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mode_description: MyString
+  mode_code: MyString
+
+two:
+  mode_description: MyString
+  mode_code: MyString

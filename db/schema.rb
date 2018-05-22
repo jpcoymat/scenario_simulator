@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_16_214125) do
+ActiveRecord::Schema.define(version: 2018_05_22_205134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_05_16_214125) do
     t.date "eta"
     t.date "etd"
     t.integer "product_id"
-    t.integer "location_id"
+    t.integer "destination_location_id"
     t.decimal "quantity"
     t.decimal "original_quantity"
     t.datetime "created_at", null: false
@@ -46,14 +46,18 @@ ActiveRecord::Schema.define(version: 2018_05_16_214125) do
     t.integer "customer_organization_id"
     t.integer "carrier_organization_id"
     t.integer "logistics_organization_id"
+    t.integer "origin_location_id"
+    t.integer "transportation_mode_id"
   end
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
-    t.integer "large_id"
+    t.string "large_id"
     t.integer "division_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "supply_order_class"
+    t.string "demand_order_class"
   end
 
   create_table "products", force: :cascade do |t|
@@ -62,6 +66,9 @@ ActiveRecord::Schema.define(version: 2018_05_16_214125) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "organization_id"
+    t.decimal "unit_weight", precision: 15, scale: 5
+    t.decimal "unit_volume", precision: 15, scale: 5
+    t.decimal "unit_price", precision: 10, scale: 2
   end
 
   create_table "scenario_projections", force: :cascade do |t|
@@ -88,6 +95,13 @@ ActiveRecord::Schema.define(version: 2018_05_16_214125) do
     t.integer "customer_organization_id"
     t.integer "carrier_organization_id"
     t.integer "logistics_organization_id"
+  end
+
+  create_table "transportation_modes", force: :cascade do |t|
+    t.string "mode_description"
+    t.string "mode_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

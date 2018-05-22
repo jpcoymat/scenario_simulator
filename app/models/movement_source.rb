@@ -1,8 +1,7 @@
 class MovementSource < ApplicationRecord
 
   belongs_to :product
-  belongs_to :location
-
+  belongs_to :transportation_mode, optional: true
 
   def enterprise_organization
     @enterprise_organziation = Organization.where(id: self.enterprise_organization_id).first
@@ -45,7 +44,21 @@ class MovementSource < ApplicationRecord
     self.logistics_organization_id = organization.id
   end
 
+  def origin_location
+    Location.where(id: self.origin_location_id).first
+  end
 
+  def origin_location=(location)
+    self.origin_location_id = location.try(:id)
+  end
+
+  def destination_location
+    Location.where(id: self.destination_location_id).first
+  end
+  
+  def destination_location=(location)
+    self.destination_location_id = location.try(:id)
+  end
 
 
 end
