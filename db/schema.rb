@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_193857) do
+ActiveRecord::Schema.define(version: 2018_05_16_214125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(version: 2018_05_15_193857) do
     t.decimal "original_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "enterprise_organization_id"
+    t.integer "supplier_organization_id"
+    t.integer "customer_organization_id"
+    t.integer "carrier_organization_id"
+    t.integer "logistics_organization_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -76,13 +81,13 @@ ActiveRecord::Schema.define(version: 2018_05_15_193857) do
     t.integer "product_id"
     t.integer "location_id"
     t.string "name"
-    t.string "buyer"
-    t.string "division_id"
-    t.string "seller_id"
-    t.string "logistics_provider"
-    t.string "carrier"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "enterprise_organization_id"
+    t.integer "supplier_organization_id"
+    t.integer "customer_organization_id"
+    t.integer "carrier_organization_id"
+    t.integer "logistics_organization_id"
   end
 
   create_table "users", force: :cascade do |t|
