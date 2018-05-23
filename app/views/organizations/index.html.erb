@@ -2,13 +2,15 @@
 
 <h1>Organizations</h1>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
       <th>Name</th>
       <th>Large</th>
       <th>Division</th>
-      <th colspan="3"></th>
+      <th>Supply Order Class</th>
+      <th>Demand Order Class</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -18,7 +20,10 @@
         <td><%= organization.name %></td>
         <td><%= organization.large_id %></td>
         <td><%= organization.division_id %></td>
-        <td><%= link_to 'Show', organization %></td>
+        <td><%= organization.supply_order_class %></td>
+        <td><%= organization.demand_order_class %></td>
+        <td><%= link_to "Products", organization_products_path(organization) %></td>
+        <td><%= link_to "Locations", organization_locations_path(organization) %></td>
         <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
         <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
