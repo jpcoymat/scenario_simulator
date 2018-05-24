@@ -1,13 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<h1>Products for <%= link_to @organization.name, organizations_path %></h1>
+
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+</div>
 
 <table class="table">
   <thead class="thead-dark">
     <tr>
       <th>Name</th>
       <th>Code</th>
-      <th>Organization</th>
+      <th>Unit Weight</th>
+      <th>Unit Volume</th>
+      <th>Unit Price</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -17,9 +23,11 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= product.code %></td>
-        <td><%= product.organization.try(:name) %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= product.unit_weight %></td>
+        <td><%= product.unit_volume %></td>
+        <td><%= number_to_currency product.unit_price %></td>
+        <td><%= link_to 'Edit', edit_organization_product_path(@organization, product), remote: true %></td>
+        <td><%= link_to 'Destroy', organization_product_path(@organization, product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,5 +35,5 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'New Product', new_organization_product_path, remote: true %>
 
