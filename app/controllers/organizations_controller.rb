@@ -15,10 +15,18 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /organizations/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST /organizations
@@ -30,6 +38,7 @@ class OrganizationsController < ApplicationController
       if @organization.save
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render :show, status: :created, location: @organization }
+        format.js {render :index }
       else
         format.html { render :new }
         format.json { render json: @organization.errors, status: :unprocessable_entity }
@@ -44,6 +53,7 @@ class OrganizationsController < ApplicationController
       if @organization.update(organization_params)
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
         format.json { render :show, status: :ok, location: @organization }
+        format.js {render :index}
       else
         format.html { render :edit }
         format.json { render json: @organization.errors, status: :unprocessable_entity }
@@ -69,6 +79,6 @@ class OrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
-      params.require(:organization).permit(:name, :large_id, :division_id)
+      params.require(:organization).permit(:name, :large_id, :division_id, :demand_order_class, :supply_order_class)
     end
 end

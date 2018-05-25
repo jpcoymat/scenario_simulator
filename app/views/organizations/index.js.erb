@@ -1,0 +1,17 @@
+var orgs = [];
+<% Organization.all.each do |org| %>
+	orgs.push({id: <%= org.id %>, name: "<%= org.name %>", division_id: "<%= org.division_id %>", large_id: "<%= org.large_id %>", supply_order_class: "<%= org.supply_order_class %>" , demand_order_class: "<%= org.demand_order_class %>"});
+<% end %>
+	
+var table_html = '<thead class="thead-dark"><tr><th>Name</th><th>Large</th><th>Division</th><th>Supply Order Class</th><th>Demand Order Class</th><th colspan="4"></th></tr></thead><tbody>';
+for (var i=0;i<orgs.length;i++){
+	var org = orgs[i];
+	table_html += '<tr><td>' + org.name + '</td><td>' + org.large_id + '</td><td>' + org.division_id + '</td><td>' + org.supply_order_class + '</td><td>' + org.demand_order_class + '</td>';
+	table_html += '<td><a href="/organizations/' + org.id + '/products">Products</a></td>';
+	table_html += '<td><a href="/organizations/' + org.id + '/locations">Locations</a></td>';
+	table_html += '<td><a data-remote="true" href="/organizations/' + org.id + '/edit">Edit</a></td>';
+	table_html += '<td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="organizations/' + org.id + '">Destroy</a></td></tr>'; 
+}
+table_html += '</tbody>';
+$("#orgsTable").html(table_html);
+$('#orgModal').modal('hide');

@@ -2,7 +2,11 @@
 
 <h1>Organizations</h1>
 
-<table class="table">
+
+<div class="modal fade bd-example-modal-lg" id="orgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+
+<table class="table" id="orgsTable">
   <thead class="thead-dark">
     <tr>
       <th>Name</th>
@@ -24,7 +28,7 @@
         <td><%= organization.demand_order_class %></td>
         <td><%= link_to "Products", organization_products_path(organization) %></td>
         <td><%= link_to "Locations", organization_locations_path(organization) %></td>
-        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
+        <td><%= link_to 'Edit', edit_organization_path(organization), remote: true %></td>
         <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -33,4 +37,4 @@
 
 <br>
 
-<%= link_to 'New Organization', new_organization_path %>
+<%= link_to 'New Organization', new_organization_path, remote: true %>
