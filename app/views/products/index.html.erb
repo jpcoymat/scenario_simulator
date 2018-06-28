@@ -1,12 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Products for <%= link_to @organization.name, organizations_path %></h1>
 
 <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
 </div>
 
-<table class="table">
+<table class="table" id="productsTable">
   <thead class="thead-dark">
     <tr>
       <th>Name</th>

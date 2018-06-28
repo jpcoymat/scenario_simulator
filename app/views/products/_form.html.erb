@@ -1,49 +1,62 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <%= form_for(@product, remote: true) do |form| %>
+		<% if @product.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+			<ul>
+				<% @product.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		  
+      <%= form_for([@organization, @product], remote: true) do |form| %>
+	  
+	  <%= form.hidden_field :organization_id, value: @organization.id %>
+	  
       <div class="form-group row">
         <label for="productName" class="col-sm-2 col-form-label">Product Name</label>
         <div class="col-sm-10">
-          <%= form.text_field :name, class: "form-control-plaintext" %>
+          <%= form.text_field :name, class: "form-control" %>
         </div>
       </div>
       <div class="form-group row">
         <label for="productCode" class="col-sm-2 col-form-label">Product Code</label>
         <div class="col-sm-10">
-          <%= form.text_field :code, class: "form-control-plaintext" %>
+          <%= form.text_field :code, class: "form-control" %>
         </div>
       </div>
       <div class="form-group row">
         <label for="productWeight" class="col-sm-2 col-form-label">Unit Weight</label>
         <div class="col-sm-10">
-          <%= form.text_field :unit_weight, class: "form-control-plaintext" %>
+          <%= form.text_field :unit_weight, class: "form-control" %>
         </div>
       </div>
       <div class="form-group row">
         <label for="productVolume" class="col-sm-2 col-form-label">Unit Volume</label>
         <div class="col-sm-10">
-          <%= form.text_field :unit_volume, class: "form-control-plaintext" %>
+          <%= form.text_field :unit_volume, class: "form-control" %>
         </div>
       </div>
       <div class="form-group row">
         <label for="productPrice" class="col-sm-2 col-form-label">Unit Price</label>
         <div class="col-sm-10">
-          <%= form.text_field :unit_price, class: "form-control-plaintext" %>
+          <%= form.text_field :unit_price, class: "form-control" %>
         </div>
       </div>
 
       <div class="modal-footer">
-        <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="submit_product_form" class="btn btn-primary">Save changes</button>
+		  <%= form.submit class: "btn btn-secondary" %>
       </div>
-      <%= end %>
+      <% end %>
     </div>
   </div>
 

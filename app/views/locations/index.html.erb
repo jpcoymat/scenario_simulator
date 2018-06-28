@@ -1,0 +1,45 @@
+<h1>Locations for <%= link_to @organization.name, organizations_path %></h1>
+
+<div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+</div>
+
+<table class="table" id="locationsTable">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State / Providence</th>
+	  <th>Postal Code</th>
+      <th>Country</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.name %></td>
+        <td><%= location.code %></td>
+        <td><%= location.address %></td>
+        <td><%= location.city %></td>
+        <td><%= location.state_providence %></td>
+        <td><%= location.postal_code %></td>
+        <td><%= location.country %></td>
+        <td><%= location.latitude %></td>
+        <td><%= location.longitude %></td>
+        <td><%= link_to 'Edit', edit_organization_location_path(@organization, location), remote: true %></td>
+        <td><%= link_to 'Destroy', organization_location_path(@organization, location), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Location', new_organization_location_path, remote: true %>
+

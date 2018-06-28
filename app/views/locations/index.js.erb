@@ -1,0 +1,24 @@
+var locations = [];
+<% @organization.locations.each do |location| %>
+locations.push({id: <%= location.id %>, 
+				name: "<%= location.name %>", 
+				code: "<%= location.code %>", 
+				address: "<%= location.address %>", 
+				city: "<%= location.city %>", 
+				state_providence: '<%= location.state_providence %>', 
+				postal_code: "<%= location.postal_code %>", 
+				country: "<%= location.country %>", 
+				latitude: "<%= location.latitude %>", 
+				longitude: "<%= location.longitude %>"});
+<% end %>
+	
+var table_html = ' <thead class="thead-dark"> <tr><th>Name</th> <th>Code</th> <th>Address</th> <th>City</th> <th>State / Providence</th> <th>Postal Code</th> <th>Country</th><th>Latitude</th> <th>Longitude</th> <th colspan="2"></th> </tr> </thead><tbody>';
+for (var i=0;i<locations.length;i++){
+	var loc = locations[i];
+	table_html += '<tr><td>' + loc.name + '</td><td>' + loc.code + '</td><td>' + loc.address + '</td><td>' + loc.city + '</td><td>' + loc.state_providence + '</td><td>' + loc.postal_code + '</td><td>' + loc.country + '</td><td>' + loc.latitude + '</td><td>' + loc.longitude + '</td>';
+	table_html += '<td><a data-remote="true" href="/organizations/' + <%= @organization.id %> + '/locations/' + loc.id + '/edit">Edit</a></td>';
+	table_html += '<td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/organizations/' + <%= @organization.id %> + '/locations/' + loc.id + '">Destroy</a></td></tr>'; 
+}
+table_html += '</tbody>';
+$("#locationsTable").html(table_html);
+$('#locationModal').modal('hide');

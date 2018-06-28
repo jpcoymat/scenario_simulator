@@ -1,0 +1,15 @@
+var products = [];
+<% @organization.products.each do |product| %>
+	products.push({id: <%= product.id %>, name: "<%= product.name %>", code: "<%= product.code %>", unit_weight: <%= product.unit_weight %>, unit_volume: <%= product.unit_volume %>, unit_price: '<%= number_to_currency product.unit_price %>'});
+<% end %>
+	
+var table_html = '<thead class="thead-dark"><tr><th>Name</th><th>Code</th><th>Unit Weight</th><th>Unit Volume</th><th>Unit Price</th><th colspan="2"></th></tr></thead><tbody>';
+for (var i=0;i<products.length;i++){
+	var product = products[i];
+	table_html += '<tr><td>' + product.name + '</td><td>' + product.code + '</td><td>' + product.unit_weight + '</td><td>' + product.unit_volume + '</td><td>' + product.unit_price + '</td>';
+	table_html += '<td><a data-remote="true" href="/organizations/' + <%= @organization.id %> + '/products/' + product.id + '/edit">Edit</a></td>';
+	table_html += '<td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/organizations/' + <%= @organization.id %> + '/products/' + product.id + '">Destroy</a></td></tr>'; 
+}
+table_html += '</tbody>';
+$("#productsTable").html(table_html);
+$('#productModal').modal('hide');
