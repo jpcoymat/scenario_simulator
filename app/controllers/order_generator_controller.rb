@@ -1,0 +1,2 @@
+class OrderGeneratorController < ApplicationController
+end
