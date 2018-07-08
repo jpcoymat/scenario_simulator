@@ -1,0 +1,15 @@
+var network = [];
+<% @focal_organization.network.each do |org_link| %>
+	network.push({id: <%= org_link.id %>, service_organization: "<%= org_link.service_organization.try(:name) %>", service_function: "<%= org_link.service_function %>"});
+<% end %>
+	
+var table_html = '<thead class="thead-dark"><tr><th>Service Organization</th><th>Service Function</th><th colspan="2"></th></tr></thead><tbody>';
+for (var i=0;i<network.length;i++){
+	var org_link = network[i];
+	table_html += '<tr><td>' + org_link.service_organization + '</td><td>' + org_link.service_function + '</td>';
+	table_html += '<td><a data-remote="true" href="/organizations/' + <%= @focal_organization.id %> + '/organization_links/' + org_link.id + '/edit">Edit</a></td>';
+	table_html += '<td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/organizations/' + <%= @focal_organization.id %> + '/organization_links/' + org_link.id + '">Destroy</a></td></tr>'; 
+}
+table_html += '</tbody>';
+$("#orgLinkTable").html(table_html);
+$('#organizationLinkModal').modal('hide');

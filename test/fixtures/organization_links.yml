@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  focal_organization_id: 1
+  service_organization_id: 1
+  organization: MyString
+
+two:
+  focal_organization_id: 1
+  service_organization_id: 1
+  organization: MyString

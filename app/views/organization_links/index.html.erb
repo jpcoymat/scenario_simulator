@@ -1,0 +1,31 @@
+<h1>Network for <%= link_to @focal_organization.name, organizations_path %></h1>
+
+<div class="modal fade" id="organizationLinkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+</div>
+
+<table class="table" id="orgLinkTable">
+  <thead class="thead-dark">
+    <tr>
+      <th>Service Organization</th>
+      <th>Service Function</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @focal_organization.network.each do |org_link| %>
+      <tr>
+        <td><%= org_link.service_organization.name %></td>
+        <td><%= org_link.service_function %></td>
+        <td><%= link_to 'Edit', edit_organization_network_link_path(@focal_organization, org_link), remote: true %></td>
+        <td><%= link_to 'Destroy', organization_network_link_path(@focal_organization, org_link), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Network Entry', new_organization_network_link_path, remote: true %>
+

@@ -13,7 +13,7 @@
       <th>Division</th>
       <th>Supply Order Class</th>
       <th>Demand Order Class</th>
-      <th colspan="4"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -27,6 +27,7 @@
         <td><%= organization.demand_order_class %></td>
         <td><%= link_to "Products", organization_products_path(organization) %></td>
         <td><%= link_to "Locations", organization_locations_path(organization) %></td>
+		<td><%= link_to "Network", organization_network_links_path(organization) %></td>
         <td><%= link_to 'Edit', edit_organization_path(organization), remote: true %></td>
         <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
