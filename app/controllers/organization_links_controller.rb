@@ -33,7 +33,7 @@ class OrganizationLinksController < ApplicationController
   # PATCH/PUT  /organizations/:organization_id/organization_links/1
   def update
     respond_to do |format|
-      if @organization_link.save
+      if @organization_link.update(organization_link_params)
         format.html {redirect_to @organization_link, notice: "Link created successfully"}
         format.js {render :index}
         format.json { render :show, status: :created, location: @organization_link }

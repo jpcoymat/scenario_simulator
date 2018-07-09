@@ -1,2 +1,2 @@
-$("#organizationLinkModal").html("<%= j (render 'form' )%>");
+$("#organizationLinkModal").html("<%= j (render partial: 'form', locals: {target_url: organization_network_links_path(@focal_organization)} )%>");
 $('#organizationLinkModal').modal({show: true});

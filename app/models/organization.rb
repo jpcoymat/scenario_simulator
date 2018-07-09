@@ -4,7 +4,7 @@ class Organization < ApplicationRecord
   has_many :locations, dependent: :destroy
   
   def network
-    OrganizationLink.where(focal_organization_id: self.id).all
+    OrganizationLink.where(focal_organization_id: self.id)
   end
   
 end

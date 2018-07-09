@@ -17,7 +17,7 @@
     <% @focal_organization.network.each do |org_link| %>
       <tr>
         <td><%= org_link.service_organization.name %></td>
-        <td><%= org_link.service_function %></td>
+        <td><%= org_link.clean_service_function %></td>
         <td><%= link_to 'Edit', edit_organization_network_link_path(@focal_organization, org_link), remote: true %></td>
         <td><%= link_to 'Destroy', organization_network_link_path(@focal_organization, org_link), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

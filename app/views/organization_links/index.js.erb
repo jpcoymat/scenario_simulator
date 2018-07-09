@@ -1,6 +1,6 @@
 var network = [];
 <% @focal_organization.network.each do |org_link| %>
-	network.push({id: <%= org_link.id %>, service_organization: "<%= org_link.service_organization.try(:name) %>", service_function: "<%= org_link.service_function %>"});
+	network.push({id: <%= org_link.id %>, service_organization: "<%= org_link.service_organization.try(:name) %>", service_function: "<%= org_link.clean_service_function %>"});
 <% end %>
 	
 var table_html = '<thead class="thead-dark"><tr><th>Service Organization</th><th>Service Function</th><th colspan="2"></th></tr></thead><tbody>';
